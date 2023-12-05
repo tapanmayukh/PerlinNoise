@@ -18,8 +18,8 @@ class PerlinNoiseSlides(Slide):
         img = ImageMobject(files[-1])
         self.add(img)
 
-        perlin = Text("Perlin", color=color2, font_size=64, )
-        noise = Text("Noise", color=color2, font_size=64, ).next_to(perlin, RIGHT)
+        perlin = Text("Perlin", color=color2, font_size=64)
+        noise = Text("Noise", color=color2, font_size=64).next_to(perlin, RIGHT)
         title = VMobject()
         title.add(perlin, noise)
         title.move_to(ORIGIN + 0.3 * UP)
@@ -108,3 +108,18 @@ class PerlinNoiseSlides(Slide):
         noise_plot2 = noise_axes2.plot_line_graph(x_vals, y_vals, line_color=color1, add_vertex_dots=False, stroke_width=0.5*DEFAULT_STROKE_WIDTH)
         self.play(Create(noise_plot2))
         self.next_slide()
+
+        self.play(FadeOut(ax1, ax2, noise_axes2, noise_plot2))
+        self.play(Uncreate(noise_ul))
+        self.play(Create(perlin_ul))
+
+        ken_img = ImageMobject("./assets/ken_perlin.jpg").shift(4 * RIGHT)
+        ken_name = Text("Prof. Kenneth H. Perlin", font_size=32, color=color3).next_to(ken_img, DOWN, buff=0.5)
+        ken_desig = Text("Dept. of Comp Sci, NYU", font_size=32, color=color3).next_to(ken_name, DOWN, buff=0.1)
+
+        self.play(FadeIn(ken_img), Write(ken_name), Write(ken_desig))
+        self.next_slide()
+
+        # 49 mins - Tron Water Perlin Noise scene
+        # 1:10:17 - Tron Perlin Terrain scene
+        # 1:26:20 - Tron Face Perlin Noise scene
