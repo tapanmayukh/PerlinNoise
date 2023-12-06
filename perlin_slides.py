@@ -113,13 +113,30 @@ class PerlinNoiseSlides(Slide):
         self.play(Uncreate(noise_ul))
         self.play(Create(perlin_ul))
 
-        ken_img = ImageMobject("./assets/ken_perlin.jpg").shift(4 * RIGHT)
-        ken_name = Text("Prof. Kenneth H. Perlin", font_size=32, color=color3).next_to(ken_img, DOWN, buff=0.5)
-        ken_desig = Text("Dept. of Comp Sci, NYU", font_size=32, color=color3).next_to(ken_name, DOWN, buff=0.1)
+        ken_img = ImageMobject("./assets/ken_perlin.jpg").to_corner(LEFT, buff=DEFAULT_MOBJECT_TO_EDGE_BUFFER * 1.5)
+        ken_name = Text("Prof. Kenneth H. Perlin", font_size=24, color=color3).next_to(ken_img, DOWN)
+        ken_desig = Text("Dept. of Comp Sci, NYU", font_size=24, color=color3).next_to(ken_name, DOWN, buff=0.1)
 
         self.play(FadeIn(ken_img), Write(ken_name), Write(ken_desig))
         self.next_slide()
 
-        # 49 mins - Tron Water Perlin Noise scene
-        # 1:10:17 - Tron Perlin Terrain scene
-        # 1:26:20 - Tron Face Perlin Noise scene
+        tron_img1 = ImageMobject("./assets/tron_1.png")
+        tron_img2 = ImageMobject("./assets/tron_2.png")
+        tron_img3 = ImageMobject("./assets/tron_3.png")
+
+        tron_imgs = Group(tron_img1, tron_img2, tron_img3)
+        tron_imgs.arrange(DOWN).scale(0.5)
+        tron_imgs.to_corner(RIGHT, buff=DEFAULT_MOBJECT_TO_EDGE_BUFFER * 2)
+        tron_name = Text("Tron (1982)", font_size=24, color=color3).next_to(tron_imgs, DOWN)
+        self.play(FadeIn(tron_imgs))
+        self.play(Write(tron_name))
+        self.next_slide()
+
+        oscar_img = ImageMobject("./assets/oscar.png").scale(0.2).shift(0.5 * RIGHT)
+        oscar_name1 = Text("Academy Award for", font_size=24, color=color3)
+        oscar_name2 = Text("Techical Achievement (1996)", font_size=24, color=color3)
+        oscar_name1.next_to(oscar_img, DOWN)
+        oscar_name2.next_to(oscar_name1, DOWN, buff=0.1)
+        self.play(FadeIn(oscar_img))
+        self.play(Write(oscar_name1), Write(oscar_name2))
+        self.next_slide()
